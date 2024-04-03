@@ -1,0 +1,74 @@
+﻿@page
+@model eUcionica.Pages.Pitanja.PitanjaModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Pitanja</h1>
+
+<p>
+    <a asp-page="Create">Dodajte novo pitanje</a>
+</p>
+<form method="post">
+    <input type="text" asp-for="SearchText">
+    <input type="submit" class="btn btn-primary" value="Pretraga">
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pitanje[0].Predmet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pitanje[0].Oblast)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pitanje[0].Nivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pitanje[0].Tekst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pitanje[0].Odgovor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pitanje[0].Slika)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Pitanje) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Predmet.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oblast.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nivo.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tekst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Odgovor)
+            </td>
+                <td>
+                    @if (item.Slika != null)
+                    {
+                        <img class="block" src="~/slike/@item.Slika" alt="" width="100" height="auto" />
+                    }
+                </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PitanjeID">Uredi</a> |
+                <a asp-page="./Details" asp-route-id="@item.PitanjeID">Detalji</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PitanjeID">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
