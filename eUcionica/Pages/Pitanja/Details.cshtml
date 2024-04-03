@@ -1,0 +1,58 @@
+﻿@page
+@model eUcionica.Pages.Pitanja.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Detalji</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pitanje.Predmet)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pitanje.Predmet.Naziv)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pitanje.Oblast)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pitanje.Oblast.Naziv)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pitanje.Nivo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pitanje.Nivo.Naziv)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pitanje.Tekst)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pitanje.Tekst)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pitanje.Odgovor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pitanje.Odgovor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pitanje.Slika)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Pitanje.Slika != null)
+            {
+                <img class="block" src="~/slike/@Model.Pitanje.Slika" alt="" width="100" height="auto" />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Pitanje?.PitanjeID">Uredi</a> |
+    <a asp-page="./Pitanja">Nazad</a>
+</div>

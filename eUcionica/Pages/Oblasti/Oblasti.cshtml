@@ -1,0 +1,43 @@
+﻿@page
+@model eUcionica.Pages.Oblasti.OblastiModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Oblasti</h1>
+
+<p>
+    <a asp-page="Create">Dodajte novu oblast</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Oblast[0].Predmet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oblast[0].Naziv)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Oblast) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Predmet.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.OblastID">Uredi</a> |
+                    <a asp-page="./Details" asp-route-id="@item.OblastID">Detalji</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.OblastID">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
